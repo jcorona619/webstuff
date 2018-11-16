@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homepage</title>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+.column1{
+	float: left;
+	width: 20%;
+	padding: 10px;
+	height: 100px;
+}
+.column2{
+	float: left;
+	width: 50%;
+	padding: 10px;
+	height: 900px;
+}
+.column3{
+	float: left;
+	width: 30%;
+	padding: 10px;
+	height: 650px;
+}
+.row{
+	width: 100%;
+	content: "";
+	display: table;
+	clear: both;
+}
+body{
+	margin: 0;
+	background-color: lightgrey;
+}
+header{
+	padding: 20px;
+	background-color: #4C5D5E;
+}
+hr.top{
+	margin-top: 0;
+	border-width: 3px;
+	color: black;
+}
+p{ 
+	font-style: oblique; 
+}
+tr.head{
+	font-size: small;
+	text-align: left;
+}
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+button{
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border-radius: 25px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.9:;
+}
+.capsule{
+	border-radius: 25px;
+	border:2px solid #73AD21;
+	padding: 30px;
+	background: #ccc
+}
+.p1{
+	font-style: oblique;
+	margin-left: 30px;
+	margin-bottom: 0;
+	font-size: small;
+	opacity: 0.5;
+}
+.sitename{
+	text-align: center;
+	color: white;
+}
+
+</style>
+</head>
+
+<header>
+  <h1 class="sitename"> Site Header </h1>
+</header>
+<hr class="top">
+
+<body>
+  <div class="row">
+    <div class="column1" style="background-color: #aaa">
+      <h1> column1 </h1>
+    </div>
+    <div class="column2" style="background-color: #bbb">
+      <h1> column2 </h1>
+    </div>
+    <div class="column3" style="background-color: grey">
+      <p class="p1"> New User? </p>
+      <form action="/register_user.php" class="capsule">
+      <h2 align="center">Create an Account</h2>
+  	    <p align="center" style="font-size: small">Please fill out this form to sign up</p></p>
+      <hr>
+      <table style="width: 100%">
+        <tbody>
+      	  <tr class="head"><th>First Name</th></tr>
+      	  <tr><td> <input type="text" placeholder="Enter First Name" name="fname" required></td></tr>
+
+      	  <tr class="head"><th>Last Name</th></tr>
+      	  <tr><td> <input type="text" placeholder="Enter Last Name" name="lname" required></td></tr>
+
+      	  <tr class="head"><th>Username</th></tr>
+      	  <tr><td> <input type="text" placeholder="Enter Username" name="usrname" required></td></tr>
+
+      	  <tr class="head"><th>Email</th></tr>
+      	  <tr><td> <input type="text" placeholder="Enter Email" name="email" required></td></tr>
+
+      	  <tr class="head"><th>Password</th></tr>
+      	  <tr><td> <input type="text" placeholder="Enter Password" name="pswrd" required></td></tr>
+      	  <tr><td><button type="submit" class="signupbtn">Sign Up</button></td></tr>
+        </tbody>
+      </table>
+    </form>
+    </div>
+  </div>
+</body>
+</html>
