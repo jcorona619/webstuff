@@ -138,7 +138,7 @@ button{
     </div>
     <div class="column3">
       <p class="p1"> New User? </p>
-      <form action="/register_user.php" class="capsule">
+      <form method="post" action="register_user.php" class="capsule">
         <h2 align="center">Create an Account</h2>
   	    <p align="center" style="font-size: small">Please fill out this form to sign up</p></p>
         <hr>
@@ -151,13 +151,13 @@ button{
       	    <tr><td> <input type="text" placeholder="Enter Last Name" name="lname" required></td></tr>
 
       	    <tr class="head"><th>Username</th></tr>
-      	    <tr><td> <input type="text" placeholder="Enter Username" name="usrname" required></td></tr>
+      	    <tr><td> <input type="text" placeholder="Enter Username" name="username" required></td></tr>
 
       	    <tr class="head"><th>Email</th></tr>
       	    <tr><td> <input type="text" placeholder="Enter Email" name="email" required></td></tr>
 
       	    <tr class="head"><th>Password</th></tr>
-      	    <tr><td> <input type="text" placeholder="Enter Password" name="pswrd" required></td></tr>
+      	    <tr><td> <input type="password" placeholder="Enter Password" name="pswrd" required></td></tr>
       	    <tr><td><button type="submit" class="signupbtn">Sign Up</button></td></tr>
           </tbody>
         </table>
