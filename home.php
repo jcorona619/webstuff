@@ -69,7 +69,7 @@
         color: #444;
         background-color: transparent;
       }
-      .column{
+      .column1{
         float: left;
         width: 40%;
         padding: 10px;
