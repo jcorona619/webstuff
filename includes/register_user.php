@@ -23,10 +23,13 @@ $sql = "INSERT INTO users(username,fname,lname,email,password)
 			VALUES('$username','$fname','$lname','$email','$password')";
 
 if($conn->query($sql) == TRUE){
-	$getId = "SELECT * FROM users WHERE username='$username'";
+	$sql = "SELECT * FROM users WHERE username='$username'";
+	$id = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($id);
+	$_SESSION['u_id'] = $row['user_id'];
 	$_SESSION['uname'] = $username;
-	//header("Location: ../home.php?register=success");
-	//exit();
+	header("Location: ../home.php?register=success");
+	exit();
 } else {
 	echo "Error: " . $sql . $conn->error;
 	//echo "<br>";

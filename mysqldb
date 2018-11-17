@@ -1,0 +1,20 @@
+create database social_media_site;
+
+
+create table images(
+    image_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id int NOT NULL,
+    image LONGBLOB NOT NULL,
+    image_name varchar(60) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+    
+create table users(
+    user_id PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username NOT NULL varchar(25),
+    fname varchar(25),
+    lname varchar(25),
+    email varchar(30),
+    password varchar(50)
+);

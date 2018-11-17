@@ -4,6 +4,7 @@ session_start();
 
 if(isset($_SESSION['uname'])){
 
+	unset($_SESSION['u_id']);
 	unset($_SESSION['uname']);
 
 	header("Location: ../index.php?logout=success");

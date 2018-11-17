@@ -1,6 +1,7 @@
 <?php
 
   include_once "user_header.php";
+  session_start();
 
 ?>
 
@@ -89,6 +90,7 @@
   <div class="main">
     <div class="row">
       <div class="column"><h2 class="user">/ <?php echo $_SESSION['uname'];?> /</h2></div>
+      <div class="column"><?php include_once "upload_test.php" ?></div>
     </div>
 
     <div class="responsive">
