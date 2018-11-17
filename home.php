@@ -1,6 +1,7 @@
 <?php
 
-  include_once "header.php";
+  include_once "user_header.php";
+
 ?>
 
 
@@ -78,19 +79,22 @@
         clear: both;
         padding: 20px;
       }
+      h2.user{
+        font-family: "Aldrich";
+        font-size: 200%;
+      }
     </style>
   </head>
   <body>
   <div class="main">
     <div class="row">
-      <div class="column"><h2>/username/</h2></div>
-      <div class="column"><?php include_once "upload_test.php"; ?></div>
+      <div class="column"><h2 class="user">/ <?php echo $_SESSION['uname'];?> /</h2></div>
     </div>
 
     <div class="responsive">
       <div class="gallery">
-        <a target="_blank" href="https://images.unsplash.com/photo-1535463731090-e34f4b5098c5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ebe64b284c0ccffbac6a0d7ce2c8d15a&auto=format&fit=crop&w=400&q=80">
-          <img src="https://images.unsplash.com/photo-1535463731090-e34f4b5098c5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ebe64b284c0ccffbac6a0d7ce2c8d15a&auto=format&fit=crop&w=400&q=80" alt="Cinque Terre" width="600" height="400">
+        <a target="_blank" href="uploads/5beec15e92a8f3.41922083.jpg">
+          <img src="uploads/5beec15e92a8f3.41922083.jpg" alt="Cinque Terre" width="600" height="400">
         </a>
         <div class="desc">Author: </div>
         <div class="desc">Location: </div>
@@ -101,8 +105,8 @@
 
     <div class="responsive">
       <div class="gallery">
-        <a target="_blank" href="https://images.unsplash.com/photo-1420593248178-d88870618ca0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92f758b859169d1457fc14879db8c3db&auto=format&fit=crop&w=334&q=80">
-          <img src="https://images.unsplash.com/photo-1420593248178-d88870618ca0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=92f758b859169d1457fc14879db8c3db&auto=format&fit=crop&w=334&q=80" alt="Forest" width="600" height="400">
+        <a target="_blank" href="uploads/5bef65f70280e4.66657741.jpeg">
+          <img src="uploads/5bef65f70280e4.66657741.jpeg" alt="Forest" width="600" height="400">
         </a>
         <div class="desc">Author: </div>
         <div class="desc">Location: </div>
@@ -112,8 +116,8 @@
 
     <div class="responsive">
       <div class="gallery">
-        <a target="_blank" href="https://images.unsplash.com/photo-1520962922320-2038eebab146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=95e501da2e999425e49acf0f60652ff3&auto=format&fit=crop&w=334&q=80">
-          <img src="https://images.unsplash.com/photo-1520962922320-2038eebab146?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=95e501da2e999425e49acf0f60652ff3&auto=format&fit=crop&w=334&q=80" alt="Northern Lights" width="600" height="400">
+        <a target="_blank" href="uploads/5bef660a44df03.77078466.jpeg">
+          <img src="uploads/5bef660a44df03.77078466.jpeg" alt="Northern Lights" width="600" height="400">
         </a>
         <div class="desc">Author: </div>
         <div class="desc">Location: </div>
@@ -154,5 +158,12 @@
       </div>
     </div>
   </div>
+  <footer>
+  <ul>
+    <li><a href="">About us</a></li>
+    <li><a href="">Contact us</a></li>
+    <li><a href="">Delete Account</a></li>
+  </ul>
+</footer>
   </body>
 </html>

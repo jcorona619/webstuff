@@ -19,9 +19,14 @@
           <button type="submit" class="signupbtn">Sign Up</button>
       </form>
   </div>
-
 </section>
-
+<footer>
+  <ul>
+    <li><a href="">About us</a></li>
+    <li><a href="">Contact us</a></li>
+    <li><a href="">Delete Account</a></li>
+  </ul>
+</footer>
 
 </body>
 </html>

@@ -27,25 +27,20 @@ $sql = "SELECT * FROM users WHERE username='$username'";
 $result = mysqli_query($conn,$sql);
 $resultCheck = mysqli_num_rows($result);
 if($resultCheck < 1){
-	echo "0 results";
-	//header("Location: index.php?login=error");
-	//exit();
+	header("Location: ../index.php?login=error_usrname");
+	exit();
 } else {
 	if($row = mysqli_fetch_assoc($result)){
 		//De-hash password
-		//$pwdCheck = password_verify($pwd,$row['password']);
 		echo "$pwdCheck";
 		if($pwdCheck !== $row['password']){
-			//header("Location: index.php?login=error");
-			//exit();
-			echo " wrong password";
+			header("Location: ../index.php?login=error_pwd");
+			exit();
 		} elseif ($pwdCheck == true){
 			//login user
+			session_start();
 			$_SESSION['u_id'] = $row['user_id'];
-			$_SESSION['u_first'] = $row['fname'];
-			$_SESSION['u_last'] = $row['lname'];
-			$_SESSION['u_uname'] = $row['username'];
-			$_SESSION['u_email'] = $row['email'];
+			$_SESSION['uname'] = $row['username'];
 			header("Location: ../home.php?login=success");
 			exit();
 		}

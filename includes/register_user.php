@@ -1,12 +1,7 @@
 <?php
 
-//include('register.html');
-/*
-echo "Register Page";
+session_start();
 
-echo "<br>";
-echo "<br>";
-*/
 define("DB_HOST", "localhost:3306");
 define("DB_USR", "root");
 define("DB_PSWD", "Qwzztop1!");
@@ -18,7 +13,7 @@ $username = test_input($_POST['username']);
 $fname = test_input($_POST['fname']);
 $lname = test_input($_POST['lname']);
 $email = test_input($_POST['email']);
-$pwd = md5($_POST['pswrd']);
+$password = md5($_POST['pswrd']);
 
 if($conn->connect_error){
 	die("connection failed:" .$conn->connect_error);
@@ -28,9 +23,10 @@ $sql = "INSERT INTO users(username,fname,lname,email,password)
 			VALUES('$username','$fname','$lname','$email','$password')";
 
 if($conn->query($sql) == TRUE){
-	//echo "New record created successfully";
-	header("Location: ../home.php?login=success");
-	exit();
+	$getId = "SELECT * FROM users WHERE username='$username'";
+	$_SESSION['uname'] = $username;
+	//header("Location: ../home.php?register=success");
+	//exit();
 } else {
 	echo "Error: " . $sql . $conn->error;
 	//echo "<br>";

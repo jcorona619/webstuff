@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>home</title>
+	<title>Gallery</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
   <link href='https://fonts.googleapis.com/css?family=Aldrich' rel="stylesheet">
 </head>
@@ -21,7 +21,7 @@ session_start();
   	  		<form method="post" action="includes/login_user.php">
   	  			<input type="text" name="username" placeholder="username/email" required>
   	  			<input type="password" name="pwd" placeholder="password" required>
-  	  			<button type="submit" name="submit">Login</button>
+  	  			<button class="login" type="submit" name="submit">Login</button>
   	  		</form>
   	  </div>
   	</div>
