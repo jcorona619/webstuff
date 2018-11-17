@@ -9,7 +9,7 @@ define("DB_NAME", "social_media_site");
 
 $conn = new mysqli(DB_HOST,DB_USR,DB_PSWD,DB_NAME);
 
-$imageName = $_FILES["image"]["name"];
+$imageName = $_POST["img_name"];
 
 //get the content of the image and then add slashes to it
 $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
@@ -22,13 +22,8 @@ $insert_image="INSERT INTO images(user_id,image,image_name) VALUES('$id','$image
 if($conn->query($insert_image) == TRUE){
 	header("Location: home.php?upload=success");
 	exit();
-	echo "New record created successfully";
-	echo "<br>";
-	echo "<br>";
 } else {
-	echo "Error: " . $insert_image . $conn->error;
-	echo "<br>";
-	echo "<br>";
+	header("Location: home.php?upload=error");
 }
 /*
 if(isset($_POST["submit"])){
