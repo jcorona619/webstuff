@@ -58,15 +58,12 @@
       }
       
       div.main {
-        background-color: white;
-        background-image: linear-gradient(white, gray);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
         font-family: "Open Sans", sans-serif;
         padding: 5px 25px;
         font-size: 18px;
         margin: 0;
         color: #444;
+        background-color: transparent;
       }
       .column{
         float: left;
@@ -79,6 +76,7 @@
         display: table;
         clear: both;
         padding: 20px;
+        padding-bottom: 70px;
       }
       h2.user{
         font-family: "Aldrich";
