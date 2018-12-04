@@ -34,15 +34,20 @@ $allowed = array('jpg','jpeg','png');
 //get the content of the image and then add slashes to it
 $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
+//creates a unique file name to store the photos in the uploads/ folder
 $fileNameNew = $imageName . "_" . $id . "_" . uniqid() .  "." . $fileActualExt;
+<<<<<<< HEAD
 $imageName = $fileNameNew; // imageName_userId_uniquieId.ext
+=======
+$imageName = $fileNameNew; //imgName_userId_uniqueNumber.ext
+>>>>>>> 565132bbb7401c8d6ccfc726fd3bf7f71afd5adb
 
 //insert the user_id, image name, and image content in image table
 $insert_image="INSERT INTO images(user_id,image,image_name) VALUES('$id','$image','$imageName')";
 //Check for correct file types
 if(in_array($fileActualExt, $allowed)){
 	if($fileError === 0){
-		$file_destination = 'uploads/' . $fileNameNew;			
+		$file_destination = 'uploads/' . $fileNameNew;			//assigns image destination	
 		move_uploaded_file($fileTmpName, $file_destination);	//Puts image into the uploads directory
 		if($conn->query($insert_image) == TRUE){
 			header("Location: home.php?upload=success");

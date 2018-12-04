@@ -5,7 +5,10 @@ if(isset($_POST["submit"])){
 
 	//Gets all the information about the file: name,size, etc
 	*$fileName = $_FILES['image']['name'];
-	*$fileError = $_FILES['image']['error'];
+	$fileTmpName = $_FILES['image']['tmp_name'];
+	$fileSize = $_FILES['image']['size'];
+	$fileError = $_FILES['image']['error'];
+	$fileType = $_FILES['image']['type'];
 	$id = $_SESSION['u_id'];
 
 	$image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
@@ -14,10 +17,10 @@ if(isset($_POST["submit"])){
 	*$fileExt = explode('.', $fileName);
 
 	//Converts any extension to lower case for consistency
-	*$fileActualExt = strtolower(end($fileExt));
+	$fileActualExt = strtolower(end($fileExt));
 
 	//Only allows specific file types
-	*$allowed = array('jpg','jpeg','png');
+	$allowed = array('jpg','jpeg','png');
 
 	//Check for correct file types
 	if(in_array($fileActualExt, $allowed)){
