@@ -29,13 +29,6 @@ div.upload_block{
 	height: 100px;
 	background-color: #ccc;
 }
-form.u{
-	display: inline-block;
-	margin: center;
-	overflow: hidden;
-	height: 40px;
-	position: fixed;
-}
 	
 </style>
 </head>
