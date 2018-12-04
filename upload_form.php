@@ -34,7 +34,7 @@ div.upload_block{
 </head>
 <body>
 <div class="upload_block">
-<form action="upload2.php" method="post" enctype="multipart/form-data">
+<form action="upload_image.php" method="post" enctype="multipart/form-data">
 	<p>Select image to upload</p>
 	<input type="file" name="image">
 	<input method="post" type="text" name="img_name" placeholder="Name Photo" required>
