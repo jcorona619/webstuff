@@ -20,7 +20,8 @@
 
       div.gallery img {
         width: 100%;
-        height: auto;
+        height: 400px;
+        object-fit: cover;
       }
 
       div.desc {
@@ -100,8 +101,8 @@
   </div>
   <footer>
   <ul>
-    <li><a href="">About us</a></li>
-    <li><a href="">Contact us</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="contact.html">Contact us</a></li>
     <li><a href="">Delete Account</a></li>
   </ul>
 </footer>

@@ -22,8 +22,8 @@
 </section>
 <footer>
   <ul>
-    <li><a href="">About us</a></li>
-    <li><a href="">Contact us</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="contact.html">Contact us</a></li>
     <li><a href="">Delete Account</a></li>
   </ul>
 </footer>

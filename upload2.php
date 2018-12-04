@@ -35,7 +35,7 @@ $allowed = array('jpg','jpeg','png');
 $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
 $fileNameNew = $imageName . "_" . $id . "_" . uniqid() .  "." . $fileActualExt;
-$imageName = $fileNameNew;
+$imageName = $fileNameNew; // imageName_userId_uniquieId.ext
 
 //insert the user_id, image name, and image content in image table
 $insert_image="INSERT INTO images(user_id,image,image_name) VALUES('$id','$image','$imageName')";
