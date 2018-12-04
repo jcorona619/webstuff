@@ -29,10 +29,13 @@ while($row = mysqli_fetch_assoc($image)){
 	$row_id = mysqli_fetch_assoc($id);
 
 	//splits up photo name into array
-	$arr = explode('_',$row['image_name'],2);
-
+	$imgName = explode('_',$row['image_name'],2);
 	//assigns the user typed name into variable
-	$imgName = $arr[0];
+	$imgName = $imgName[0];
+
+	//truncates the timestamp for date display
+	$date = explode(' ',$row['uploaded_at']);
+	$date = $date[0];
 
 	//displays all the current images in the database with the
 	// users name, name of the photo, and date uploaded
@@ -46,7 +49,7 @@ while($row = mysqli_fetch_assoc($image)){
 	echo   		  "</a>";
 	echo        "<div class='desc'>Name: " . $imgName . "</div>";
 	echo        "<div class='desc'>User: " . $row_id['username'] . "</div>"; //$_SESSION['uname']
-	echo        "<div class='desc'>Date of Photo: " . $row['uploaded_at'] . "</div>";
+	echo        "<div class='desc'>Date of Photo: " . $date . "</div>";
 	echo      "</div>";
 	echo    "</div>";
 	echo "</body>";
