@@ -18,14 +18,24 @@ $image = mysqli_query($conn,$sql);
 while($row = mysqli_fetch_assoc($image)){
 	/* Get usernames for each image */
 	$user_id = $row['user_id'];
+
+	//queries users table for displaying the users name who uploaded the photo
 	$sql_uname = "SELECT username FROM users WHERE user_id='$user_id'";
+
+	//returns matching row from query
 	$id = mysqli_query($conn,$sql_uname);
 
+	//creates array from retrieved users row
 	$row_id = mysqli_fetch_assoc($id);
 
+	//splits up photo name into array
 	$arr = explode('_',$row['image_name'],2);
+
+	//assigns the user typed name into variable
 	$imgName = $arr[0];
 
+	//displays all the current images in the database with the
+	// users name, name of the photo, and date uploaded
 
 	echo "<html>";
 	echo "<body>";

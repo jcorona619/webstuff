@@ -19,19 +19,20 @@ echo "<br>";
 
 $username = test_input($_POST['username']);
 $pwd = $_POST['pwd'];
+//hashes password for comparison to db password
 $pwdCheck = md5($pwd);
 
 $sql = "SELECT * FROM users WHERE username='$username'";
 
 
 $result = mysqli_query($conn,$sql);
-$resultCheck = mysqli_num_rows($result);
+$resultCheck = mysqli_num_rows($result);  //returns number of rows that match query
 if($resultCheck < 1){
 	header("Location: ../index.php?login=error_usrname");
 	exit();
 } else {
 	if($row = mysqli_fetch_assoc($result)){
-		//De-hash password
+		//compares entered password to stored password
 		echo "$pwdCheck";
 		if($pwdCheck !== $row['password']){
 			header("Location: ../index.php?login=error_pwd");
@@ -39,7 +40,7 @@ if($resultCheck < 1){
 		} elseif ($pwdCheck == true){
 			//login user
 			session_start();
-			$_SESSION['u_id'] = $row['user_id'];
+			$_SESSION['u_id'] = $row['user_id'];	// assigns seesion varibles for user logging in
 			$_SESSION['uname'] = $row['username'];
 			header("Location: ../home.php?login=success");
 			exit();
@@ -47,7 +48,7 @@ if($resultCheck < 1){
 	}
 }
 
-function test_input($data){
+function test_input($data){ //removes unecessary input from login form
   	$data = trim($data);
   	$data = stripslashes($data);
   	$data = htmlspecialchars($data);
