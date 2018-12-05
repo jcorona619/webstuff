@@ -185,6 +185,21 @@ header .nav-login form button.logout{
     font-size: 16px;
     color: white;
 }
+button.delete{
+    float: center;
+    width: 150px;
+    height: 40px;
+    margin-right: 140px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #4b5656;
+    font-family: arial;
+    font-size: 16px;
+    color: white;
+}
+button.delete:hover{
+    background-color: #111;
+}
 header .nav-login form button:hover{
     background-color: #ccc;
     }

@@ -72,8 +72,21 @@
       }
       .column1{
         float: left;
+        width: 30%;
+        padding: 10px;
+        height: 25px;
+      }
+      .column2{
+        float: left;
         width: 40%;
         padding: 10px;
+        height: 25px;
+      }
+      .column3{
+        float: left;
+        width: 25%;
+        padding: 30px;
+        margin-bottom: 0;
         height: 25px;
       }
       .row:after{
@@ -93,8 +106,13 @@
   <body>
   <div class="main">
     <div class="row">
-      <div class="column"><h2 class="user">/ <?php echo $_SESSION['uname'];?> /</h2></div>
-      <div class="column"><?php include_once "upload_form.php" ?></div>
+      <div class="column1"><h2 class="user">/ <?php echo $_SESSION['uname'];?> /</h2></div>
+      <div class="column2"><?php include_once "upload_form.php" ?></div>
+      <div class="column3"> 
+        <a href ="user_images.php">
+          <button class="delete" type = button><h1>Delete Photo</h1></button>
+        </a>
+      </div>
     </div>
     <?php include_once "display.php" ?>
     
