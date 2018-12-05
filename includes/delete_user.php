@@ -25,28 +25,24 @@ $result = mysqli_query($conn,$sql);
 
 $resultCheck = mysqli_num_rows($result);  //returns number of rows that match query
 if($resultCheck < 1){
-	header("Location: delete_all.php?login=error_usrname");
+	header("Location: ../delete_account.html?login=error_usrname");
 	exit();
 } else {
 	if($row = mysqli_fetch_assoc($result)){
 		//compares entered password to stored password
 		if($pwdCheck !== $row['password']){
-			header("Location: delete_all.php?login=error_pwd");
+			header("Location: ../delete_account.html?login=error_pwd");
 			exit();
 		} elseif ($pwdCheck == true){
-			
-			$uid = $row['user_id'];	
-			echo $uid;
-			$sql2 = "DELETE * FROM images WHERE user_id='$uid'";
-			if($conn->query($sql2) == FALSE){
-				echo "ERROR from images";
-			}
-			$sql3 = "DELETE * FROM users WHERE user_id='$uid'";
-			if($conn->query($sql2) == FALSE){
-				echo "ERROR from users";
-			}
-			else{
-				header("Location: ../index.php?account_delete=success");
+			//gets id of the user
+			$uid = $row['user_id'];
+			//deletes user and all their photos using cascade delete	
+			$delete = "DELETE FROM users WHERE user_id='$uid'";
+			if(mysqli_query($conn,$delete)){
+				header("Location: ../index.php?acc_delete=success");
+				exit();
+			}else{
+				header("Location: ../delete_account.html?acc_delete=error");
 				exit();
 			}
 		}

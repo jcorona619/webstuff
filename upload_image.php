@@ -53,6 +53,9 @@ if(in_array($fileActualExt, $allowed)){
 			exit();
 		}
 	}
+}else {
+	header("Location: home.php?upload=errorfiletype");
+	exit();
 }
 
 ?>
