@@ -86,17 +86,28 @@ $image = mysqli_query($conn,$sql);
 
 
 while($row = mysqli_fetch_assoc($image)){
+  //queries users table for displaying the users name who uploaded the photo
+  $sql_uname = "SELECT username FROM users WHERE user_id='$user_id'";
+  //returns matching row from query
+  $id = mysqli_query($conn,$sql_uname);
+  //creates array from retrieved users row
+  $row_id = mysqli_fetch_assoc($id);
+  //splits up photo name into array
+  $imgName = explode('_',$row['image_name'],2);
+  //assigns the user typed name into variable
+  $imgName = $imgName[0];
 	echo "<html>";
 	echo "<body>";
 	echo	"<div class='responsive'>";
 	echo      "<div class='gallery'>";
 	echo 		  '<img src="uploads/'.$row['image_name'].'" width="600" height="400"/>';
+  echo        "<div class='desc'> " . $imgName . "</div>";
 	echo        "<div class='desc'>";
 	echo          '<form method="post" action="includes/delete_image.php">';
 	echo          '<input type="submit" name="delete" value="delete"/>';
   echo          '<input type="hidden" name="img_id" value="'.$row['image_id'].'"/>';
 	echo          '</form>';
-	echo          "</div>";
+	echo        "</div>";
 	echo      "</div>";
 	echo    "</div>";
 	echo "</body>";
