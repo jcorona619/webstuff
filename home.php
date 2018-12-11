@@ -121,7 +121,7 @@
   <ul>
     <li><a href="about.html">About us</a></li>
     <li><a href="contact.html">Contact us</a></li>
-    <li><a href="">Delete Account</a></li>
+    <li><a href="delete_account.html">Delete Account</a></li>
   </ul>
 </footer>
   </body>

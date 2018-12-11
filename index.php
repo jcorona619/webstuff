@@ -9,7 +9,7 @@
       <p class="p2">WELCOME</p>
       <form class="signup-form" method="post" action="includes/register_user.php">
           <h2 align="center">Create an Account</h2>
-          <p align="center" style="font-size: small">Please fill out this form to sign up</p></p>
+          <p align="center" style="font-size: small">Please fill out this form to sign up</p>
           <hr>
           <input type="text" placeholder="Enter First Name" name="fname" required>
           <input type="text" placeholder="Enter Last Name" name="lname" required>
@@ -24,7 +24,7 @@
   <ul>
     <li><a href="about.html">About us</a></li>
     <li><a href="contact.html">Contact us</a></li>
-    <li><a href="">Delete Account</a></li>
+    <li><a href="delete_account.html">Delete Account</a></li>
   </ul>
 </footer>
 
