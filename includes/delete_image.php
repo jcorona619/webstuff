@@ -19,9 +19,12 @@ $imgId = $_POST['img_id'];
 $sql = "DELETE FROM images WHERE user_id='$uid' AND image_id='$imgId'";
 
 // for removing photo from uploads folder--NOT IMPLEMENTED
-$sql2 = "SELECT FROM images WHERE user_id='$uid' AND image_id='$imgId'";
+$sql2 = "SELECT image_name FROM images WHERE user_id='$uid' AND image_id='$imgId'";
 
 if($conn->query($sql) == TRUE){
+		$result = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_assoc($result);
+		unlink("../uploads/".$row['image_name']);
 		header("Location: ../home.php?deletion=success");
 		exit();
 	} else {

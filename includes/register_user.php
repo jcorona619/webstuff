@@ -1,52 +1,122 @@
 <?php
 
-session_start();
+// Declare variables
+$fname = ""; // First name
+$lname = ""; // Last name
+$email = ""; // Email
+$email2 = ""; // Email 2
+$password = ""; // Password 
+$password2 = ""; // Password 2 
+$error_array = array(); // Holds warning messages
 
-define("DB_HOST", "localhost:3306");
-define("DB_USR", "root");
-define("DB_PSWD", "Qwzztop1!");
-define("DB_NAME", "social_media_site");
+// When click signup_button
+if(isset($_POST['signup_button'])) {
+	// First Name formating
+	$fname = strip_tags($_POST['fname']); // Remove html tags (if possible)
+	$fname = str_replace(' ', '', $fname); // Remove spaces
+	$fname = ucfirst(strtolower($fname)); // Uppercase first letter
 
-//Connects to database
-$conn = new mysqli(DB_HOST,DB_USR,DB_PSWD,DB_NAME);
+	// Last Name formating
+	$lname = strip_tags($_POST['lname']); // Remove html tags (if possible)
+	$lname = str_replace(' ', '', $lname); // Remove spaces
+	$lname = ucfirst(strtolower($lname)); // Uppercase first letter
 
-//get variables from form
-$username = test_input($_POST['username']);
-$fname = test_input($_POST['fname']);
-$lname = test_input($_POST['lname']);
-$email = test_input($_POST['email']);
-//hash password
-$password = md5($_POST['pswrd']);
+	// Username formating
+	$username = strip_tags($_POST['username']); // Remove html tags
+	$username = str_replace(' ', '', $username); // Remove spaces
 
-if($conn->connect_error){
-	die("connection failed:" .$conn->connect_error);
+	// Email formating
+	$email = strip_tags($_POST['email']); // Remove html tags
+	$email = str_replace(' ', '', $email); // Remove spaces
+
+	// Confirm Email formating
+	$email2 = strip_tags($_POST['email2']); // Remove html tags
+	$email2 = str_replace(' ', '', $email2); // Remove spaces
+
+	// Password formating
+	$password = strip_tags($_POST['pswrd']); // Remove html tags
+
+	// Confirm Password formating
+	$password2 = strip_tags($_POST['pswrd2']); // Remove html tags
+
+	// Email Checking
+	if($email == $email2) {
+		// Check if email in valid format
+		if(filter_Var($email, FILTER_VALIDATE_EMAIL)) {
+			$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+			// Check if email already exists
+			$e_check = mysqli_query($conn, "SELECT email FROM users WHERE email='$email'");
+
+			// Count number of row returned
+			$num_rows = mysqli_num_rows($e_check);
+
+			// If $num_rows > 0, email already exists in database
+			if($num_rows > 0) {
+				array_push($error_array, "Email already exists<br>");
+			}
+
+		}
+		else {
+			array_push($error_array, "Invalid email format<br>");
+		}
+
+	}
+	else {
+		array_push($error_array, "Email do not match<br>");
+	}
+
+
+	// Username Checking
+	$username_check = mysqli_query($conn, "SELECT email FROM users WHERE username='$username'");
+	// Count number of row returned
+	$number_rows = mysqli_num_rows($username_check);
+	// If $number_rows > 0, username already exists in database
+	if($number_rows > 0) {
+		array_push($error_array, "Username already exists<br>");
+	}
+
+
+	// First Name checking
+	if(strlen($fname) > 25 || strlen($fname) < 2)
+		array_push($error_array,"Your first name must be between 2 to 25 characters<br>");
+
+	// Last Name checking
+	if(strlen($lname) > 25 || strlen($lname) < 2)
+		array_push($error_array, "Your last name must be between 2 to 25 characters<br>");
+
+	//Check password, password2 valid
+	if($password != $password2) {
+		array_push($error_array,"Your password do not match<br>");
+	}
+	else {
+		if(preg_match('/[^A-za-z0-9]/', $password))
+			array_push($error_array, "Your password can only contain English characters or numbers<br>");
+	}
+	if( strlen($password) > 30 || strlen($password) < 5)
+		array_push($error_array, "Your password must be between 5 to 30 characters<br>");
+
+
+	// If no error, save record into database
+	if(empty($error_array)) {
+		$password = md5($password); // Encrypt password
+
+		// Save record into database
+		$query = mysqli_query($conn, "INSERT INTO users(username,fname,lname,email,password)
+					VALUES('$username','$fname','$lname','$email','$password')");
+
+		$sql = "SELECT * FROM users WHERE username='$username'";
+		$id = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_assoc($id);
+		$_SESSION['u_id'] = $row['user_id'];
+		$_SESSION['uname'] = $username;
+
+		// Once registered, direct user to home.php
+		//header("Location: ../home.php?register=success");
+		echo "<script type='text/javascript'>window.location.href = 'home.php';</script>";
+		exit();
+
+	}
 }
-
-//query for insertion
-$sql = "INSERT INTO users(username,fname,lname,email,password)
-			VALUES('$username','$fname','$lname','$email','$password')";
-
-if($conn->query($sql) == TRUE){
-	$sql = "SELECT * FROM users WHERE username='$username'"; //query users table to retrieve user_id,username
-	$id = mysqli_query($conn,$sql); 						 //query
-	$row = mysqli_fetch_assoc($id); 						 //gets matching row from users table
-	$_SESSION['u_id'] = $row['user_id']; 					 //assigns user_id to a session variable for image uploads
-	$_SESSION['uname'] = $username;		 					 //assigns username for currently logged in user 
-	header("Location: ../home.php?register=success");
-	exit();
-} else {
-	echo "Error: " . $sql . $conn->error;
-}
-
-
-
-/* Handles unnecessary characters (spaces,tabs,etc), gets rid of backslashes
-     and catches and html characters from executing in the form */
-  function test_input($data){
-  	$data = trim($data);
-  	$data = stripslashes($data);
-  	$data = htmlspecialchars($data);
-  	return $data;
-  }
 
 ?>
